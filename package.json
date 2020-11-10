@@ -42,6 +42,7 @@
   "dependencies": {
     "@types/cannon": "^0.1.4",
     "cannon": "^0.6.2",
+    "copy-webpack-plugin": "^6.3.0",
     "normalize.css": "^8.0.1",
     "three": "^0.121.1",
     "three-collada-loader": "0.0.1",

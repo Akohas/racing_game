@@ -8,7 +8,7 @@ import {MTLLoader} from  'three/examples/jsm/loaders/MTLLoader';
 import {MtlObjBridge} from 'three/examples/jsm/loaders/obj2/bridge/MtlObjBridge.js';
 
 import {Preloader} from './preloader';
-import { MeshToonMaterial } from 'three';
+import {getStaticFile} from './helpers';
 
 class Game {
     scene = new THREE.Scene();
@@ -101,10 +101,10 @@ class Game {
             && !child.name.includes('ProxyKitchen')
         }
 
-		this.MTLLoader.load('/static/racing-map/rctimetrial.mtl', (materials) => {
+		this.MTLLoader.load(getStaticFile('models/racing-map/rctimetrial.mtl'), (materials) => {
 			this.objectLoader.addMaterials(MtlObjBridge.addMaterialsFromMtlLoader(materials), true);
 
-			this.objectLoader.load('/static/racing-map/rctimetrial.obj', (object) => {
+			this.objectLoader.load(getStaticFile('models/racing-map/rctimetrial.obj'), (object) => {
 				object.traverse(function (child) {
 					if (child instanceof THREE.Mesh) {
                         if (isInvisible(child)) {
@@ -138,7 +138,7 @@ class Game {
 
         const activeSkin = '1';
 
-        this.fbxLoader.load('/static/racing-map/car.fbx', (object) => {
+        this.fbxLoader.load(getStaticFile('models/car.fbx'), (object) => {
             console.log(object)
             object.traverse(function (child) {
                 if (child instanceof THREE.Mesh) {
